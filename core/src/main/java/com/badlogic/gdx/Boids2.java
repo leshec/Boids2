@@ -49,7 +49,7 @@ public class Boids2 extends ApplicationAdapter {
 		}
 
 		Pixmap pixmap = new Pixmap(1, 1, Pixmap.Format.RGBA8888);
-		pixmap.setColor(Color.WHITE);
+		pixmap.setColor(Color.GREEN);
 		pixmap.drawPixel(0, 0);
 		Texture texture = new Texture(pixmap); //remember to dispose of later
 		pixmap.dispose(); //
