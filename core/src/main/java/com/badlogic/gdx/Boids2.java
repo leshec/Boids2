@@ -33,7 +33,7 @@ public class Boids2 extends ApplicationAdapter {
 	private Vector2 motion4;
 	private Vehicle vehicle;
 	private ArrayList<Vehicle> vehicles;
-	private int numberOfBoids =30;
+	private int numberOfBoids = 40;
 
 //TO DO contribute to lib gdx vector methods are lacking
 
@@ -41,7 +41,7 @@ public class Boids2 extends ApplicationAdapter {
 	public void create() {
 
 		//initialise ArrayList
-		vehicles = new ArrayList<Vehicle>();
+		vehicles = new ArrayList<>();
 
 		for(int i = 0; i<numberOfBoids; i++){
 			Vehicle vehicle = new Vehicle(MathUtils.random(0, WIDTH), MathUtils.random(0,HEIGHT));
@@ -96,11 +96,13 @@ public class Boids2 extends ApplicationAdapter {
 
 		//drawer.circle(5,5,5,2);
 
+		batch.begin();
 		for(Vehicle vehicle: vehicles){
-			batch.begin();
+
 			drawer.circle(vehicle.getX(), vehicle.getY(), vehicle.r, vehicle.lineWidth);
-			batch.end();
+
 		}
+		batch.end();
 	}
 
 
