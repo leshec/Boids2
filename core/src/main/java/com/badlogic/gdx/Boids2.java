@@ -33,9 +33,27 @@ public class Boids2 extends ApplicationAdapter {
 	private Vector2 motion4;
 	private Vehicle vehicle;
 	private ArrayList<Vehicle> vehicles;
-	private int numberOfBoids = 40;
+	private int numberOfBoids = 70;
 
-//TO DO contribute to lib gdx vector methods are lacking
+/* TO DO:
+
+Firstly, on the colour issue. Check Bookmarks for the pixmap problem.
+The issue seems to be based on creating another texture region. See stackoverflow discussion.
+Need to create a helper function and
+work out how to generate and use multiple pixmaps formed of a region with multiple colours.
+
+
+*First: Bug is in cohesion and/or seek.
+1. colour one boid
+2. investigate updating the delta
+3. make into triangles with velocity heading
+4. introduce sliders
+5. Bug: circles seem to want to track to bottom left corner: why?
+6. reboot with a Android phone version
+7. Refactor code as per NOC git repo: Flocking package
+8. Remove possible bug of duplicate WIDTH and HEIGHT variables in two classes.
+
+ */
 
 	@Override
 	public void create() {
@@ -44,7 +62,7 @@ public class Boids2 extends ApplicationAdapter {
 		vehicles = new ArrayList<>();
 
 		for(int i = 0; i<numberOfBoids; i++){
-			Vehicle vehicle = new Vehicle(MathUtils.random(0, WIDTH), MathUtils.random(0,HEIGHT));
+			Vehicle vehicle = new Vehicle(320, 240);
 			vehicles.add(vehicle);
 		}
 
@@ -100,7 +118,7 @@ public class Boids2 extends ApplicationAdapter {
 		for(Vehicle vehicle: vehicles){
 
 			drawer.circle(vehicle.getX(), vehicle.getY(), vehicle.r, vehicle.lineWidth);
-
+			//drawer.line(vehicle.getX(), vehicle.getY(), vehicle.getVelocityX(), vehicle.getVelocityY());
 		}
 		batch.end();
 	}
@@ -112,8 +130,8 @@ public class Boids2 extends ApplicationAdapter {
 			vehicle.separate(vehicles);
 			vehicle.align(vehicles);
 			vehicle.cohesion(vehicles);
-			vehicle.update();
 			vehicle.borders();
+			vehicle.update();
 		}
 	}
 
