@@ -1,5 +1,9 @@
 # Boids2
 
+This is a port of a Boids simulation using processing.org by Daniel Shiffman based on Craig Reynolds.
+
+From the gdx-liftoff starter application clone...
+
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/tommyettinger/gdx-liftoff).
 
 This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
